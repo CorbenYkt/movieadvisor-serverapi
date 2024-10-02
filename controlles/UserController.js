@@ -10,16 +10,8 @@ export const Register = async (req, res) => {
             return res.status(400).json(errors.array());
         }
 
-        const password = req.body.password;
-        const salt = await bcrypt.genSalt(10);
-        const hash = await bcrypt.hash(password, salt);
-
         const doc = new UserModel({
             email: req.body.email,
-            password: req.body.password,
-            fullName: req.body.fullName,
-            avatarUrl: req.body.avatarUrl,
-            passwordHash: hash,
         });
 
         const user = await doc.save();
@@ -30,7 +22,7 @@ export const Register = async (req, res) => {
                 expiresIn: '30d'
             });
 
-        const { passwordHash, ...userData } = user._doc;
+        const { ...userData } = user._doc;
         res.json({
             ...userData,
             token,
