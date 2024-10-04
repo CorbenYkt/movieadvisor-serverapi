@@ -14,25 +14,80 @@ export const getAll = async (req, res) => {
 };
 export const getOne = async (req, res) => {
     try {
-        const movieid = req.params.movieid;
-        const like = await LikeModel.findById({
-            _id: movieid
-        }).populate('userid').exec();
+        const postId = req.params.id;
+        const post = await PostModel.findById({
+            _id: postId
+        }).populate('user').exec();
+
+        res.json(post)
+
+        // const postId = req.params.id;
+        // PostModel.findOneAndUpdate({
+        //     _id: postId,
+        // }, {
+        //     $inc: {
+        //         viewsCoint: 1
+        //     }
+        // },
+        //     {
+        //         returnDocument: 'after',
+        //     },
+        //     (err, doc) => {
+        //         if (err) {
+        //             console.log(err)
+        //             return res.status(500).json({
+        //                 message: 'Error fetching post'
+        //             })
+
+        //         }
+
+        //         if (!doc) {
+        //             return res.status(404).json({
+        //                 message: 'Post not found'
+        //             })
+        //         }
+        //         res.json(doc);
+        //     })
+
+
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({
+            message: 'Error fetching one post'
+        })
+    }
+};
+
+export const doLike = async (req, res) => {
+    try {
+        const movieid = req.query.movieid;
+        const userid = req.query.userid;
+
+        const like = await LikeModel.find({
+            movieid: movieid,
+            userid: userid
+        }).exec();
 
         res.json(like)
 
     } catch (err) {
         console.log(err)
         res.status(500).json({
-            message: 'Error fetching one like'
+            message: 'Error fetching does user like'
         })
     }
 };
+
 export const remove = async (req, res) => {
     try {
-        const likeId = req.params.id;
+        const movieid = req.query.movieid;
+        const userid = req.query.userid;
 
-        LikeModel.findByIdAndDelete(likeId)
+
+        LikeModel.findOneAndDelete({
+            movieid: movieid,
+            userid: userid
+        })
             .then(deletedLike => {
                 if (deletedLike) {
                     res.json({
