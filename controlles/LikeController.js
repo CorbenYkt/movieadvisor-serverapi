@@ -60,15 +60,15 @@ export const getOne = async (req, res) => {
 
 export const doLike = async (req, res) => {
     try {
-        // const movieid = req.query.movieid;
-        // const userid = req.query.userid;
+        const movieid = req.query.movieid;
+        const userid = req.query.userid;
 
-        // const like = await LikeModel.find({
-        //     movieid: movieid,
-        //     userid: userid
-        // }).exec();
+        const like = await LikeModel.find({
+            movieid: movieid,
+            userid: userid
+        }).exec();
 
-        res.json('liked!')
+        res.json(like)
 
     } catch (err) {
         console.log(err)
