@@ -25,7 +25,7 @@ app.get('/dolike', LikeController.doLike);
 app.post('/likes', LikeController.create);
 app.delete('/likes', LikeController.remove);
 
-app.listen(4444, (err) => {
+app.listen(80, (err) => {
   if (err) {
     return console.log(err);
   }
