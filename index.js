@@ -5,7 +5,6 @@ import checkAuth from './utils/checkAuth.js';
 import * as UserController from './controlles/UserController.js';
 import * as LikeController from './controlles/LikeController.js';
 import cors from 'cors';
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
 mongoose.connect('mongodb+srv://vool34:wwwwww@movieadvisor.m94cj.mongodb.net/movieadvisor')
   .then(() => {
@@ -25,7 +24,7 @@ app.get('/dolike', LikeController.doLike);
 app.post('/likes', LikeController.create);
 app.delete('/likes', LikeController.remove);
 
-app.listen(80, (err) => {
+app.listen(4444, (err) => {
   if (err) {
     return console.log(err);
   }
