@@ -5,6 +5,8 @@ import checkAuth from './utils/checkAuth.js';
 import * as UserController from './controlles/UserController.js';
 import * as LikeController from './controlles/LikeController.js';
 import cors from 'cors';
+import https from 'https';
+import fs from 'fs';
 
 mongoose.connect('mongodb+srv://vool34:wwwwww@movieadvisor.m94cj.mongodb.net/movieadvisor')
   .then(() => {
@@ -24,9 +26,21 @@ app.get('/dolike', LikeController.doLike);
 app.post('/likes', LikeController.create);
 app.delete('/likes', LikeController.remove);
 
-app.listen(4444, (err) => {
-  if (err) {
-    return console.log(err);
-  }
-  console.log('Server OK');
+
+const httpsServer = https.createServer({
+  key: fs.readFileSync('/etc/letsencrypt/live/my_api_url/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/my_api_url/fullchain.pem'),
+}, app);
+
+httpsServer.listen(443, () => {
+  console.log('HTTPS Server running on port 443');
 });
+
+
+
+// app.listen(4444, (err) => {
+//   if (err) {
+//     return console.log(err);
+//   }
+//   console.log('Server OK');
+// });
