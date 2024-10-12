@@ -32,8 +32,8 @@ const httpsServer = https.createServer({
   cert: fs.readFileSync('/etc/letsencrypt/live/corbenykt.ru/fullchain.pem'),
 }, app);
 
-httpsServer.listen(4444, () => {
-  console.log('HTTPS Server running on port 4444');
+httpsServer.listen(80, () => {
+  console.log('HTTPS Server running on port 80');
 });
 
 
