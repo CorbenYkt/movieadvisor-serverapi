@@ -17,7 +17,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get('/likes', LikeController.getAll);
 app.get('/dolike', LikeController.doLike);
 app.post('/likes', LikeController.create);
 app.delete('/likes', LikeController.remove);

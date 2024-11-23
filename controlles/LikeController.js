@@ -1,17 +1,5 @@
 import LikeModel from '../models/Like.js';
 
-export const getAll = async (req, res) => {
-    try {
-        const likes = await LikeModel.find().populate('userid').exec();
-        res.json(likes)
-    } catch (err) {
-        console.log(err)
-        res.status(500).json({
-            message: 'Error fetching all likes'
-        })
-    }
-};
-
 export const doLike = async (req, res) => {
     try {
         const movieid = req.query.movieid;
