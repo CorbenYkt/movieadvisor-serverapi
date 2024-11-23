@@ -21,35 +21,6 @@ export const getOne = async (req, res) => {
 
         res.json(post)
 
-        // const postId = req.params.id;
-        // PostModel.findOneAndUpdate({
-        //     _id: postId,
-        // }, {
-        //     $inc: {
-        //         viewsCoint: 1
-        //     }
-        // },
-        //     {
-        //         returnDocument: 'after',
-        //     },
-        //     (err, doc) => {
-        //         if (err) {
-        //             console.log(err)
-        //             return res.status(500).json({
-        //                 message: 'Error fetching post'
-        //             })
-
-        //         }
-
-        //         if (!doc) {
-        //             return res.status(404).json({
-        //                 message: 'Post not found'
-        //             })
-        //         }
-        //         res.json(doc);
-        //     })
-
-
     } catch (err) {
         console.log(err)
         res.status(500).json({
