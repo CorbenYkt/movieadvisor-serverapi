@@ -4,7 +4,6 @@
 This repository contains the API for the main website https://corbenykt.github.io/movieadvisor. The API is built using Node.js and Express and handles several requests:
 
 ```javascript
-app.get('/likes', LikeController.getAll);
 app.get('/dolike', LikeController.doLike);
 app.post('/likes', LikeController.create);
 app.delete('/likes', LikeController.remove);
