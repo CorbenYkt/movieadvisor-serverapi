@@ -4,14 +4,11 @@ export const doLike = async (req, res) => {
     try {
         const movieid = req.query.movieid;
         const userid = req.query.userid;
-
         const like = await LikeModel.find({
             movieid: movieid,
             userid: userid
         }).exec();
-
         res.json(like)
-
     } catch (err) {
         console.log(err)
         res.status(500).json({
@@ -28,7 +25,6 @@ export const create = async (req, res) => {
         })
         const like = await doc.save();
         res.json(like);
-
     } catch (err) {
         console.log(err);
         res.status(500).json({
@@ -41,8 +37,6 @@ export const remove = async (req, res) => {
     try {
         const movieid = req.query.movieid;
         const userid = req.query.userid;
-
-
         LikeModel.findOneAndDelete({
             movieid: movieid,
             userid: userid
@@ -64,7 +58,6 @@ export const remove = async (req, res) => {
                     message: 'Error removing Like'
                 })
             });
-
     } catch (err) {
         console.log(err)
         res.status(500).json({
