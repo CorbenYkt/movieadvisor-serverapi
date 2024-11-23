@@ -1,8 +1,5 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import { RegisterValidation, loginValidation, likeCreateValidation } from './validations.js';
-import checkAuth from './utils/checkAuth.js';
-import * as UserController from './controlles/UserController.js';
 import * as LikeController from './controlles/LikeController.js';
 import cors from 'cors';
 import https from 'https';
@@ -24,7 +21,6 @@ app.get('/likes', LikeController.getAll);
 app.get('/dolike', LikeController.doLike);
 app.post('/likes', LikeController.create);
 app.delete('/likes', LikeController.remove);
-
 
 const httpsServer = https.createServer({
   key: fs.readFileSync('/etc/letsencrypt/live/corbenykt.ru/privkey.pem'),
