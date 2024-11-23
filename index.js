@@ -10,10 +10,10 @@ import fs from 'fs';
 
 mongoose.connect('mongodb+srv://vool34:wwwwww@movieadvisor.m94cj.mongodb.net/movieadvisor')
   .then(() => {
-    console.log('DB OK')
+    console.log('DB Status - Connected')
   })
   .catch((err) => {
-    console.log('DB ERROR', err)
+    console.log('DB Status - ERROR', err)
   })
 
 const app = express();
@@ -35,12 +35,3 @@ const httpsServer = https.createServer({
 httpsServer.listen(443, () => {
   console.log('HTTPS Server running on port 443');
 });
-
-
-
-// app.listen(4444, (err) => {
-//   if (err) {
-//     return console.log(err);
-//   }
-//   console.log('Server OK');
-// });
