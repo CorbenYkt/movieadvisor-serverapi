@@ -4,7 +4,6 @@ import * as LikeController from './controlles/LikeController.js';
 import cors from 'cors';
 import https from 'https';
 import fs from 'fs';
-import https from 'https';
 import httpProxy from 'http-proxy';
 
 mongoose.connect('mongodb+srv://vool34:wwwwww@movieadvisor.m94cj.mongodb.net/movieadvisor')
