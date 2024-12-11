@@ -28,7 +28,7 @@ app.use((req, res, next) => {
     next();
   } else if (host === 'mern.corbenykt.ru') {
     // Проксирование запросов на порт 4444
-    proxy.web(req, res, { target: 'https://localhost:4444' }, (error) => {
+    proxy.web(req, res, { target: 'https://corbenykt.ru:4444' }, (error) => {
       console.error('Proxy Error:', error);
       res.status(502).send('Bad Gateway');
     });
