@@ -8,10 +8,10 @@ import httpProxy from 'http-proxy';
 
 mongoose.connect('mongodb+srv://vool34:wwwwww@movieadvisor.m94cj.mongodb.net/movieadvisor')
   .then(() => {
-    console.log('DB Status - Connected')
+    console.log('Movieadvisor project DB Status - Connected')
   })
   .catch((err) => {
-    console.log('DB Status - ERROR', err)
+    console.log('Movieadvisor project DB Status - ERROR', err)
   })
 
 const app = express();
