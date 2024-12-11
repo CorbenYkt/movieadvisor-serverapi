@@ -22,7 +22,7 @@ app.use(cors());
 
 app.use((req, res, next) => {
   const host = req.headers.host;
-  
+  console.log(host)
   if (host === 'corbenykt.ru') {
     // Обычная обработка для corbenykt.ru
     next();
